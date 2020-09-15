@@ -1,0 +1,11 @@
+CONSTRAINTS in SQL
+
+1. NOT NULL : Not null constraint can used to ensure that for perticular attribute NULL value can not be stored in db.
+
+2. UNIQUE : Ensure that all the values in a column are different.
+
+3. CHECK : Ensure all the value in a column satisfy a dpecific condition.
+
+4. DEFAULT : Consists of default value when no value is inserted.
+
+5. INDEX : This constraint is used to create and retrive data from arelation quickly.
