@@ -130,3 +130,17 @@ WHERE user_name = 'deepshukla292@gmail.com'
 GROUP BY date_time::DATE, user_name
 -- having count(user_name)>1
 ORDER BY date_time::DATE;
+
+-- 4. Late hour 
+-- a. of all user on perticular day
+select user_name, min(date_time::TIME) - '08:30:00'::TIME
+from temporary_mis
+where date_time::DATE = '2019-09-18'
+group by user_name;
+
+-- b. of perticular user on perticular day
+select user_name, min(date_time::TIME) - '08:30:00'::TIME
+from temporary_mis
+where user_name like '%outlook%'
+group by user_name;
+
