@@ -138,9 +138,21 @@ from temporary_mis
 where date_time::DATE = '2019-09-18'
 group by user_name;
 
--- b. of perticular user on perticular day
-select user_name, min(date_time::TIME) - '08:30:00'::TIME
+-- b. of perticular user for all 3 days
+select date_time::DATE, user_name, min(date_time::TIME) - '08:30:00'::TIME
 from temporary_mis
-where user_name like '%outlook%'
-group by user_name;
+where user_name = 'sharlawar77@gmail.com'
+group by user_name, date_time::DATE;
 
+-- 5. Working hour 
+-- a. for all user for same day
+SELECT date_time::DATE, user_name, MAX(date_time::TIME) - MIN(date_time::TIME)
+FROM temporary_mis
+WHERE date_time::DATE = '2019-09-19'
+GROUP BY user_name, date_time::DATE;
+
+-- b. for same user different day 
+SELECT date_time::DATE, user_name, MAX(date_time::TIME) - MIN(date_time::TIME)
+FROM temporary_mis
+WHERE user_name LIKE '%out%'
+GROUP BY user_name, date_time::DATE;
