@@ -123,3 +123,10 @@ FROM temporary_mis
 WHERE mouse = 0 AND keyboard = 0
 GROUP BY user_name;
 
+-- 3. Attendance of user based on 3 days
+SELECT date_time::DATE, user_name
+FROM temporary_mis
+WHERE user_name = 'deepshukla292@gmail.com'
+GROUP BY date_time::DATE, user_name
+-- having count(user_name)>1
+ORDER BY date_time::DATE;
