@@ -116,3 +116,10 @@ SELECT user_name, count(number_of_packets_sent)
 FROM temporary_mis
 GROUP BY user_name;
 
+
+-- 2. Count number of times mouse and keyboard = 0 Ans. 549
+SELECT user_name,count(mouse)
+FROM temporary_mis
+WHERE mouse = 0 AND keyboard = 0
+GROUP BY user_name;
+
