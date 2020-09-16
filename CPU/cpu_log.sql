@@ -51,3 +51,68 @@ files_changed INT NOT NULL
 COPY cpu_analysis."temporary_mis" FROM '/home/deep/Documents/csv/CpuLogData2019-09-18.csv'
 DELIMITER ','
 CSV HEADER;
+
+-- 1. Aggrigation function
+-- a. Avg of Cpu_Working_Time by user
+SELECT user_name, technology, avg(cpu_working_time)
+FROM temporary_mis
+GROUP BY user_name, technology;
+
+-- b. max of Cpu_idle_Time ny user
+SELECT user_name, technology, max(cpu_idle_time)
+FROM temporary_mis
+GROUP BY user_name, technology;
+
+-- c. avg of Cpu_idle_Time by technology
+SELECT technology, avg(cpu_idle_time)
+FROM temporary_mis
+GROUP BY technology;
+
+
+-- d. min of cpu_percent by technology
+SELECT technology, min(cpu_percent)
+FROM temporary_mis
+GROUP BY technology;
+
+-- e. max of cpu_percent by user
+SELECT user_name, max(cpu_percent)
+FROM temporary_mis
+GROUP BY user_name;
+
+-- f. avg of Usage_cpu_count by date
+SELECT date_time::DATE,user_name, avg(usage_cpu_count)
+FROM temporary_mis
+GROUP BY date_time::DATE, user_name
+ORDER BY date_time;
+
+-- g. avg of Usage_cpu_count by date and user
+SELECT date_time::DATE, user_name, avg(usage_cpu_count)
+FROM temporary_mis
+GROUP BY date_time::DATE, user_name
+ORDER BY date_time asc;
+
+-- h. avg of Usage_cpu_count by date and user filtering for perticular user by having clause
+SELECT date_time::DATE,user_name, avg(usage_cpu_count)
+FROM temporary_mis
+GROUP BY date_time::DATE, user_name
+having user_name = 'iamnzm@outlook.com'
+order by date_time;
+
+-- i. above query by using like
+SELECT date_time::DATE,user_name, avg(usage_cpu_count)
+FROM temporary_mis
+GROUP BY date_time::DATE, user_name
+having user_name like '%@outlook%'
+order by date_time;
+
+-- j. count number_of_packets_sent for perticular user on perticular date
+SELECT date_time::DATE, user_name, count(number_of_packets_sent)
+FROM temporary_mis
+GROUP BY date_time::DATE, user_name
+ORDER BY date_time;
+
+-- k. count total number_of_packets_sent for perticular user
+SELECT user_name, count(number_of_packets_sent)
+FROM temporary_mis
+GROUP BY user_name;
+
