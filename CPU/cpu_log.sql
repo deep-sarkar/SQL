@@ -124,12 +124,22 @@ WHERE mouse = 0 AND keyboard = 0
 GROUP BY user_name;
 
 -- 3. Attendance of user based on 3 days
+-- a. For perticular user
 SELECT date_time::DATE, user_name
 FROM temporary_mis
 WHERE user_name = 'deepshukla292@gmail.com'
 GROUP BY date_time::DATE, user_name
 -- having count(user_name)>1
 ORDER BY date_time::DATE;
+
+-- b. For all user
+SELECT Attendance.user_name, count(Attendance.user_name) as present
+FROM (
+SELECT user_name
+FROM temporary_mis
+GROUP BY date_time::DATE,user_name) Attendance
+GROUP BY Attendance.user_name;
+
 
 -- 4. Late hour 
 -- a. of all user on perticular day
