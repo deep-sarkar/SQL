@@ -1,0 +1,18 @@
+ACID in rdbms
+Conceptual properties for a transaction.
+
+1. Aomicity
+    => Either all or none
+        - If in a transaction, if it fails at any step, we will go for rollback before commit 
+            so that there shouldn't be any data loss.
+        - By this we can conclude we will commit either for complete transaction not for a part of transaction.
+        - A failed transaction cant be resumed, it will be restart from first step.
+
+2. Consistancy
+    => Before transaction start and after transaction complete the sum of perticular attribute(money) should be same.
+
+3. Isolation
+    => Try to change all parallel transaction into searies of transaction so tha it should be consistance.
+
+4. Durability
+    
