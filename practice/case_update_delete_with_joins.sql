@@ -31,3 +31,11 @@ UPDATE employee
 SET salary = 4500
 FROM dept
 WHERE dept.d_no = employee.dept_no and dept.d_no = 3;
+
+-- 2. DELETE using JOINS
+-- Delete all data for testers from employee table
+DELETE
+FROM employee
+USING dept
+where employee.dept_no = dept.d_no and d_name = 'tester';
+
