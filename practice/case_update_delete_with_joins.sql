@@ -19,3 +19,15 @@ CREATE TABLE employee( id int NOT NULL PRIMARY KEY,
 INSERT INTO employee(id, name, salary, dept_no)
 VALUES (101, 'Tom', 4000, 1);
 
+-- 1. UPDATE USING JOINS
+-- a. Update all employee salary to 4000
+UPDATE employee
+SET salary = 4000
+FROM dept
+WHERE dept.d_no = employee.dept_no;
+
+-- Update 3rd dept salary to 4500
+UPDATE employee
+SET salary = 4500
+FROM dept
+WHERE dept.d_no = employee.dept_no and dept.d_no = 3;
