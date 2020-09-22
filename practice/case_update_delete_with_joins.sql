@@ -39,3 +39,11 @@ FROM employee
 USING dept
 where employee.dept_no = dept.d_no and d_name = 'tester';
 
+-- 3. Update using case
+UPDATE dept
+SET d_name = CASE d_no
+WHEN 1 THEN 'test'
+WHEN 2 THEN 'dev'
+WHEN 3 THEN 'hr'
+WHEN 4 THEN 'sales'
+END;
