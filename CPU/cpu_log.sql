@@ -166,3 +166,23 @@ SELECT date_time::DATE, user_name, MAX(date_time::TIME) - MIN(date_time::TIME)
 FROM temporary_mis
 WHERE user_name LIKE '%out%'
 GROUP BY user_name, date_time::DATE;
+
+
+-- N-th max, by using co-related subquery
+-- 3rd max mouse count
+select user_name, mouse
+from temporary_mis as T1
+where 2 = (
+	Select count(distinct mouse)
+	From temporary_mis as T2
+	where T2.mouse > T1.mouse
+);
+
+-- -4th min using limit and derived table
+select t.mouse
+from (
+	Select distinct mouse
+	From temporary_mis 
+	order by mouse asc
+) t
+limit 1 offset 3;
