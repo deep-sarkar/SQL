@@ -3,7 +3,7 @@ import pandas as pd
 df = pd.read_csv('dataframe/CpuLogData2019-09-18.csv')
 
 # convert DateTime column as datetime object
-df['DateTime'] = pd.to_datetime(df.DateTime)
+# df['DateTime'] = pd.to_datetime(df.DateTime)
 # print(df.DateTime.dt.date)
 # print(df.DateTime.dt.time)
 # print(df['technology'])
